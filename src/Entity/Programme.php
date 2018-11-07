@@ -42,14 +42,35 @@ class Programme
     private $duration;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $showOnPortal;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", nullable=true, length=255)
      */
     private $levelAdmitted;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $type;
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
 
     /**
      * @ORM\Column(type="integer")
@@ -155,5 +176,10 @@ class Programme
         $this->departmentId = $departmentId;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -1,7 +1,7 @@
 {#
    This is the base template used as the application layout which contains the
    common elements and decorates all the other templates.
-   See https://symfony.com/doc/current/book/templating.html#template-inheritance-and-layouts
+
 #}
 <!--
 Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
@@ -13,10 +13,10 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>{% block title %}Takoradi Technical University - Admissions{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     {% endblock %}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/assets/img/logo2.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo2.png') }}" />
 
 </head>
 
@@ -42,7 +42,7 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
             <div class="ui basic segment">
                 <div class="ui three column stackable grid">
                     <div class="column">
-                        <a href="{{ path('security_login') }}"><img  style="width: 250px;margin-left: -24px" src="{{ asset('public/assets/images/logo.png') }}" alt="TTU logo" class="ui small image" /></a>
+                        <a href="{{ path('security_login') }}"><img  style="width: 250px;margin-left: -24px" src="{{ asset('assets/images/logo.png') }}" alt="TTU logo" class="ui small image" /></a>
                     </div>
 
 
@@ -73,7 +73,7 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
         <h1 class="ui header">
             <i class="circular user icon"></i>
             <div class="content">
-                Applicant login
+               International Applicants login
                 <div class="sub header">Register here to gain access to the admissions form</div>
             </div>
         </h1>
@@ -399,7 +399,7 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
 
 </div>
 
-<script src="{{ asset('public/assets/js/app.js')}}"></script>
+<script src="{{ asset('assets/js/app.js')}}"></script>
 
 <script>
 

@@ -452,7 +452,7 @@ class FormController extends AbstractController
         $phone = $applicant->getPhone();
         $email= $applicant->getEmail();
         $grades = $em->getRepository('App:ExamResult')->findByApplicant($formNo);
-        $message = "Hi $name your application with first choice $firstChoice and second choice $secondChoice has been received by our school. Your Application number is $formNo. Write it on the envelope with the printout and forward it to our university. Congrats";
+        $message = "Hi $name your application has been received by our school. Your Application number is $formNo.Congrats";
 
       //  dump($applicant->getFormCompleted());die();
 
@@ -492,7 +492,7 @@ class FormController extends AbstractController
                     <li>Takoradi Technical University  has received your form you filled at the Admissions Portal \n.</br>  
                    
                 </ol></p>
-                <p>  Your PIN code=$pin and SERIAL NO.=$serial </br> </p>
+                <p>Your PIN code=$pin and SERIAL NO.=$serial </br> </p>
                 <p> Thank you for applying to study at Takoradi Technical University.</p>
                 <p>Your First Choice is $firstChoice</p>
                 <p>Your Second Choice is $secondChoice</p>

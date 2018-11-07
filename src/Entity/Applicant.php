@@ -1009,6 +1009,7 @@ class Applicant implements  \Serializable
     /**
 
      * @ORM\Column(type="string")
+     * @Assert\Blank()
      */
     private $denomination;
 

@@ -5,13 +5,16 @@
         body.pushable .pusher {
             background-color: none;
         }
+        #page1{
+            text-align: justify;
+        }
 
         fieldset {
             background: none;
         }
         .uppercase {
             font-weight: bold;
-            text-align: right;
+            text-align: justify;
         }
         @media print
         {
@@ -66,7 +69,7 @@
 
     <div id="print">
         <div id="page1">
-        <img src='{{ asset('public/assets/images/header.jpg') }}' style="width:1086px;height: auto"
+        <img src='{{ asset('assets/images/header.jpg') }}' style="width:1086px;height: auto"
              class="ui fluid image"/>
 
         <br/>
@@ -168,7 +171,7 @@
 
                             <img class="thumbnail img-preview medium ui image ui fluid image" style="width:240px;height:auto;margin-left: 85px  "
 
-                                 src="{{ asset('public/albums/thumbnails/'~ data.applicationNumber ~'.jpg') }}"
+                                 src="{{ asset('albums/thumbnails/'~ data.applicationNumber ~'.jpg') }}"
                                  alt="your passport photo">
 
                         </div>
@@ -383,14 +386,14 @@
 
 
             <p>
-            <img src='{{ asset('public/assets/images/footer.jpg') }}' style="width:1086px;height: auto"
+            <img src='{{ asset('assets/images/footer.jpg') }}' style="width:1086px;height: auto"
                  class="ui fluid image"/>
             </p>
-         <center><img src="{{ qrcode_data_uri(data.applicationNumber, { writer: 'svg', size: 125 }) }}" /></center>
-        </div>
+         {#<center><img src="{{ qrcode_data_uri(data.applicationNumber, { writer: 'svg', size: 125 }) }}" /></center>#}
+         </div>
         </div>
 
-    </div>
+
    {# <div class="links">
         <center>
 

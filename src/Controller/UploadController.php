@@ -164,6 +164,8 @@ class UploadController extends AbstractController
 
         $user = $this->getUser();
         $applicant = $user->getFormNo();
+
+
         $uploaded = $user->getPictureUploaded();
         $applicantID = $user->getId();
 
@@ -171,6 +173,8 @@ class UploadController extends AbstractController
             $formNumber = $this->getDoctrine()->getManager()
                 ->getRepository('App\Entity\FormNo')
                 ->findAll();
+
+
             foreach ($formNumber as $row) {
                 $applicantNumber = $row->getNumber();
             }
@@ -194,7 +198,7 @@ class UploadController extends AbstractController
 
 
                     if ($file->getClientSize() <= $max_size) {
-                        $path = 'public/albums/thumbnails';
+                        $path = 'albums/thumbnails';
 
                         /**
                          * get new form no for applicant
@@ -215,10 +219,11 @@ class UploadController extends AbstractController
                        *
                        */
                         $newPath = $path . '/' . $filename;
+
                         $photoBeforeResize = ImageHelper::resize_crop_image("345", "435", $file, $newPath);
 
 
-                        $file->move($path, $photoBeforeResize);
+                        $file->move($path, $newPath);
 
 
                         /*
@@ -290,7 +295,7 @@ class UploadController extends AbstractController
 
 
                         if ($file->getClientSize() <= $max_size) {
-                            $path = 'public/albums/thumbnails';
+                            $path = 'albums/thumbnails';
 
                             /**
                              * get new form no for applicant

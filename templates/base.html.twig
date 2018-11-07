@@ -29,11 +29,13 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
         .error{
             color:red;
         }
-         /*input{*/
-             /*text-transform: uppercase;*/
-         /*}*/
+         input{
+             text-transform: uppercase;
+         }
 
-
+        label,.required{
+            color:red;
+        }
 
     </style>
     {% block css %}
@@ -157,10 +159,10 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
 
 </div>
 {% block javascripts %}
-    <script src="{{ asset('public/assets/js/app.js')}}"></script>
-    <script src="{{ asset('public/assets/js/form.js')}}"></script>
-    <script src="{{ asset('public/assets/js/validate-form.js')}}"></script>
-    <script src="{{ asset('public/assets/js/semantic.min.js')}}"></script>
+    <script src="{{ asset('assets/js/app.js')}}"></script>
+    <script src="{{ asset('assets/js/form.js')}}"></script>
+    <script src="{{ asset('assets/js/validate-form.js')}}"></script>
+    <script src="{{ asset('assets/js/semantic.min.js')}}"></script>
 
     <script>
 
@@ -179,8 +181,8 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
         $(".false").fadeOut(4000);
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    {#<script src="{{   asset('public/assets/js/vue.min.js') }}"> </script>
-    <script src="{{   asset('public/assets/js/vue-form.min.js')}}"> </script>
+    {#<script src="{{   asset('assets/js/vue.min.js') }}"> </script>
+    <script src="{{   asset('assets/js/vue-form.min.js')}}"> </script>
 
     <script>
         $(document).ready(function(){
@@ -190,7 +192,7 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
         });
 
 
-    </script>#}
+    </script>
     <script>
 
        /* $(document).ready(function () {
@@ -218,7 +220,7 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
         });*/
 
 
-       /* //code for ensuring vuejs can work with select2 select boxes
+        //code for ensuring vuejs can work with select2 select boxes
         Vue.directive('select', {
             twoWay: true,
             priority: 1000,
@@ -255,7 +257,7 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
 
             },
 
-        })*/
+        })#}
 
     </script>
 
