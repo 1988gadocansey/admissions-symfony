@@ -90,7 +90,7 @@ class ApplicantStepOne extends AbstractType
 
 
                     ),
-                    'years' => range(1900, 2018),
+                    'years' => range(1900, date("Y")),
                     'required' => true,
 
                 ))
@@ -103,7 +103,7 @@ class ApplicantStepOne extends AbstractType
 
 
                 ->add('entryQualificationTwo', ChoiceType::class, array('data' => @$this->existingApplicant->getentryQualificationOne(), 'placeholder' => 'Choose an answer',
-                    'choices' => array( 'WASSSCE' => 'WASSSCE', 'SSSCE' => 'SSSCE', 'TEU/TECHNICAL CERTIFICATES' => 'TEU/TECHNICAL CERTIFICATES', 'NVTI' => 'NVTI', '1st Degree' => '1st Degree', '2nd Degree' => '2nd Degree', 'HND' => 'HND','NECO'=>'NECO'),
+                    'choices' => array( 'WASSSCE' => 'WASSSCE', 'SSSCE' => 'SSSCE', 'TEU/TECHNICAL CERTIFICATES' => 'TEU/TECHNICAL CERTIFICATES', 'NVTI' => 'NVTI', '1st Degree' => '1st Degree', '2nd Degree' => '2nd Degree', 'HND' => 'HND','NECO'=>'NECO','DIPLOMA'=>'DIPLOMA'),
 
                     'attr' => array('v-model' => 'qualification2', 'v-select' => 'qualification1', 'id' => 'qualification2', 'class' => 'ui fluid search dropdown')))
 
@@ -192,13 +192,13 @@ class ApplicantStepOne extends AbstractType
 
 
                     ),
-                    'years' => range(1900, 2018),
+                    'years' => range(1900, date("Y")),
                     'required' => true,
 
                 ))
                 ->add('phone', TelType::class, array('required' => true,  ))
                 ->add('entryQualificationOne', ChoiceType::class, array(  'placeholder' => 'Choose an answer',
-                    'choices' => array('WASSSCE' => 'WASSSCE', 'SSSCE' => 'SSSCE', 'TEU/TECHNICAL CERTIFICATES' => 'TEU/TECHNICAL CERTIFICATES', 'NVTI' => 'NVTI', '1st Degree' => '1st Degree', 'HND' => 'HND', 'Other' => 'Other'),
+                    'choices' => array('WASSSCE' => 'WASSSCE', 'SSSCE' => 'SSSCE', 'TEU/TECHNICAL CERTIFICATES' => 'TEU/TECHNICAL CERTIFICATES', 'NVTI' => 'NVTI', '1st Degree' => '1st Degree', 'HND' => 'HND', 'DIPLOMA'=>'DIPLOMA','NECO'=>'NECO','Other' => 'Other'),
 
                     'attr' => array('v-model' => 'qualification1', 'v-select' => 'qualification1', 'required' => '', 'id' => 'qualification1', 'class' => 'ui fluid search dropdown')))
 

@@ -74,6 +74,10 @@
 
                     </td>
                     <td valign="top">
+                        {{ form_row(form.year) }}
+
+                    </td>
+                    <td valign="top">
                         {{ form_row(form.subject) }}
 
                     </td>
@@ -136,7 +140,8 @@
                                                 <th data-field="price">VALUE</th>
                                                 <th data-field="price">EXAM TYPE</th>
                                                 <th data-field="price">SITTING</th>
-                                                <th data-field="price">MONTH OF EXAM</th>
+                                                <th data-field="price">MONTH</th>
+                                                <th data-field="price">YEAR</th>
                                                 <th data-field="price">CENTER</th>
                                                 <th style="text-align: center">ACTION</th>
                                             </tr>
@@ -152,6 +157,7 @@
                                                     <td>{{ genus.examType }}</td>
                                                     <td>{{ genus.sitting }}</td>
                                                     <td>{{ genus.month|capitalize }}</td>
+                                                    <td>{{ genus.year }}</td>
                                                     <td>{{ genus.center }}</td>
                                                     <td>
                                                        {# <a href="{{ path('result_delete', {'id': genus.id}) }}" onclick="return('Are you sure you wanted to delete this result??')"class="ui button red">

@@ -31,7 +31,7 @@ use App\Entity\Applicant;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 class ApplicantStepThree extends AbstractType
 {
     private $em;
@@ -79,12 +79,30 @@ class ApplicantStepThree extends AbstractType
 
 
             ->add('indexNo', TextType::class, array(  'required' => true,'attr' => array( 'v-model'=>'indexno','v-form-ctrl'=>'','required'=>'','id'=>'indexno')))
+
+
+
             ->add('center', TextType::class, array('label'=>'Exam Center',  'required' => true,'attr' => array( 'v-model'=>'center','v-form-ctrl'=>'', 'id'=>'center')))
-            ->add('month', TextType::class, array(  'label'=>'Date of exam','required' => true,'attr' => array( 'v-model'=>'month','v-form-ctrl'=>'', 'id'=>'month','placeholder'=>'May/June 2017')))
 
 
 
-            ->add('Save and add new', SubmitType::class ,array('attr' => array( 'class'=>'ui large orange button ','v-form-ctrl'=>'')));
+            ->add('month', ChoiceType::class, array('required'=>true,  'placeholder' => 'select',
+                'choices'   => array( 'MAY/JUNE' => '6', "NOV/DEC"=>"12"), 'attr'=>array('v-model'=>'sitting','v-select'=>'sitting','id'=>'sitting','class'=>'ui fluid search dropdown'))
+)
+            ->add('year', ChoiceType::class,
+                array(
+                    'required' => true, 'choices' => $this->buildYearChoices(), 'attr'=>array('v-model'=>'sitting','v-select'=>'sitting','id'=>'sitting','class'=>'ui fluid search dropdown')
+                ))
+
+
+        ->add('Save and add new', SubmitType::class ,array('attr' => array( 'class'=>'ui large orange button ','v-form-ctrl'=>'')));
+    }
+
+    public function buildYearChoices() {
+        $distance = 50;
+        $yearsBefore = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") - $distance));
+        $yearsAfter = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") ));
+        return array_combine(range($yearsBefore, $yearsAfter), range($yearsBefore, $yearsAfter));
     }
     /**
      * @param OptionsResolverInterface $resolver

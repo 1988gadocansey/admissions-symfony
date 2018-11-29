@@ -99,7 +99,7 @@
                             </tr>
                             <tr>
                                 <td class="uppercase" style="text-align: right" style="" align="right"><span>Other Names:</span></td>
-                                <td class="capitalize">{{ data.othernames }}</td>
+                                <td class="capitalize">{{ data.othernames|upper }}</td>
                             </tr>
                             <tr>
                                 <td class="uppercase" style="text-align: right" align="right"><span>Gender:</span></td>
@@ -389,7 +389,7 @@
             <img src='{{ asset('assets/images/footer.jpg') }}' style="width:1086px;height: auto"
                  class="ui fluid image"/>
             </p>
-         {#<center><img src="{{ qrcode_data_uri(data.applicationNumber, { writer: 'svg', size: 125 }) }}" /></center>#}
+         <center><img src="{{ qr_code_data_uri(data.applicationNumber, { writer: 'svg', size: 125 }) }}" /></center>
          </div>
         </div>
 

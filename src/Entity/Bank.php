@@ -68,17 +68,17 @@ class Bank
     /**
      * @return string
      */
-    public function getBankAccountName()
+    public function getBankAccountNumber()
     {
-        return $this->bank_account_name;
+        return $this->bank_account_number;
     }
 
     /**
-     * @param string $bank_account_name
+     * @param string $bank_account_number
      */
-    public function setBankAccountName($bank_account_name)
+    public function setBankAccountNumber($bank_account_number)
     {
-        $this->bank_account_name = $bank_account_name;
+        $this->bank_account_number = $bank_account_number;
     }
 
 
@@ -95,7 +95,7 @@ class Bank
      *
      * @ORM\Column(type="string", unique=true)
      */
-    private $bank_account_name;
+    private $bank_account_number;
 
 
     /**

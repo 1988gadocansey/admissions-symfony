@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="admissions_exams_results")
  *
- * Defines the properties of the Region entity to represent the applicant region.
+ * Defines the properties of the Result entity to represent the applicant exams results.
  * @author Gad Ocansey <gadocansey@gmail.com>
  */
 class ExamResult implements \JsonSerializable
@@ -272,7 +272,25 @@ class ExamResult implements \JsonSerializable
      *
      * @ORM\Column(type="string")
      */
+
+
     private $center;
+
+    /**
+     * @return string
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param string $year
+     */
+    public function setYear(string $year): void
+    {
+        $this->year = $year;
+    }
     /**
      * @var string
      *
@@ -281,6 +299,12 @@ class ExamResult implements \JsonSerializable
     private $examType;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $year;
 
     /**
      * {@inheritdoc}

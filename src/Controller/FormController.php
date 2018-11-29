@@ -195,8 +195,8 @@ class FormController extends AbstractController
                 $applicant->setFormType(ucwords($formType));
                 $applicant->setLetterPrinted(0);
                 $applicant->setEntryMode(ucwords($helper->entryType($formType)));
-                $applicant->setCreatedAt(new \DateTime());
-                $applicant->setUpdatedAt(new \DateTime());
+                //$applicant->setCreatedAt(new \DateTime());
+                //$applicant->setUpdatedAt(new \DateTime());
 
 
                 $em->persist($applicant);
@@ -254,7 +254,7 @@ class FormController extends AbstractController
                 $applicant->setLetterPrinted(0);
                 $applicant->setEntryMode(ucwords($helper->entryType($formType)));
                 //$applicant->setCreatedAt(new \DateTime());
-                $applicant->setUpdatedAt(new \DateTime());
+               // $applicant->setUpdatedAt(new \DateTime());
 
 
                 $em->persist($applicant);
@@ -314,7 +314,7 @@ class FormController extends AbstractController
             $applicant->setProgrammeStudied(ucwords($form->get('programmeStudied')->getData()));
 
             //$applicant->setCreatedAt(new \DateTime());
-            $applicant->setUpdatedAt(new \DateTime());
+            //$applicant->setUpdatedAt(new \DateTime());
 
 
             $em->persist($applicant);

@@ -510,17 +510,17 @@ class Applicant implements  \Serializable
     /**
      * @return mixed
      */
-    public function getClass()
+    public function getAward()
     {
-        return $this->class;
+        return $this->award;
     }
 
     /**
-     * @param mixed $class
+     * @param mixed $award
      */
-    public function setClass($class)
+    public function setAward($award)
     {
-        $this->class = $class;
+        $this->award = $award;
     }
 
     /**
@@ -891,37 +891,7 @@ class Applicant implements  \Serializable
         $this->eligible = $eligible;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
 
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param mixed $updatedAt
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
 
     /**
 
@@ -1008,7 +978,7 @@ class Applicant implements  \Serializable
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      * @Assert\Blank()
      */
     private $denomination;
@@ -1075,14 +1045,14 @@ class Applicant implements  \Serializable
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $disabilty;
 
     /**
 
 
-     * @ORM\Column(name="admitted_by_id",type="string")
+     * @ORM\Column(name="admitted_by_id",type="string",nullable=True)
      */
     private $admittedBy;
 
@@ -1166,7 +1136,7 @@ class Applicant implements  \Serializable
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $programmeStudied;
 
@@ -1247,9 +1217,9 @@ class Applicant implements  \Serializable
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
-    private $class;
+    private $award;
 
 
     /**
@@ -1268,26 +1238,26 @@ class Applicant implements  \Serializable
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $preferedHall;
 
     /**
 
-     * @ORM\Column(type="string" )
+     * @ORM\Column(type="string" ,nullable=True)
      */
     private $yearOfAdmission;
 
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $entryQualificationOne;
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $entryQualificationTwo;
 
@@ -1297,13 +1267,13 @@ class Applicant implements  \Serializable
      * @Assert\NotBlank(
      *   message = "Grade should be a number"
      * )
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $grade;
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $bond;
 
@@ -1311,24 +1281,24 @@ class Applicant implements  \Serializable
 
     /**
 
-     * @ORM\Column(type="integer",options={"default"=0})
+     * @ORM\Column(type="integer",options={"default"=0},nullable=True)
      */
     private $qualify;
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $results;
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", options={"default" ="Applicant" })
+     * @ORM\Column(type="string", options={"default" ="Applicant" },nullable=True)
      */
     private $status;
     /**
 
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=True)
      */
     private $admited;
 
@@ -1337,33 +1307,33 @@ class Applicant implements  \Serializable
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(name="programme_admitted_id",type="string")
+     * @ORM\Column(name="programme_admitted_id",type="string",nullable=True)
      */
     private $programmeAdmitted;
 
     /**
 
-     * @ORM\Column(name="hall_admitted_id",type="string")
+     * @ORM\Column(name="hall_admitted_id",type="string",nullable=True)
      */
     private $hallAdmitted;
 
     /**
 
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=True)
      */
     private $dateAdmitted;
 
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", options={"default" ="Regular" })
+     * @ORM\Column(type="string", options={"default" ="Regular" },nullable=True)
      */
     private $sectionAdmitted;
 
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $admissionType;
 
@@ -1371,55 +1341,76 @@ class Applicant implements  \Serializable
     /**
 
      * @Assert\NotBlank()
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="decimal" , nullable=True)
      */
     private $admissionFees;
 
     /**
 
-     * @ORM\Column(type="boolean" )
+     * @ORM\Column(type="boolean" ,nullable=True)
      */
     private $hallAccomodation;
 
 
     /**
 
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=True)
      */
     private $letterPrinted;
 
 
     /**
 
-     * @ORM\Column(type="boolean"  )
+     * @ORM\Column(type="boolean" ,nullable=True )
      */
     private $sms_sent;
 
     /**
 
-     * @ORM\Column(type="boolean" )
+     * @ORM\Column(type="boolean",nullable=True )
      */
     private $formCompleted;
 
 
     /**
 
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=True)
      */
     private $eligible;
 
 
     /**
-
-     * @ORM\Column(type="datetime")
+     * @var datetime $created
+     * @ORM\Column(type="datetime",nullable=True)
      */
     private $createdAt;
 
     /**
 
-     * @ORM\Column(type="datetime")
+     * @var datetime $updated
+     * @ORM\Column(type="datetime",nullable=True)
      */
     private $updatedAt;
+
+    /**
+     * Gets triggered only on insert
+
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
 
     public function setRegion(Region $regions): void
     {
