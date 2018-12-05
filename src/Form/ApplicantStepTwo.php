@@ -261,7 +261,7 @@ class ApplicantStepTwo extends AbstractType
 
                     )
                 ),
-                'attr'=>array('v-model'=>'hall','v-select'=>'hall','id'=>'hall','class'=>'ui fluid  ')
+                'attr'=>array('v-model'=>'hall','v-select'=>'hall','id'=>'hall','class'=>'ui fluid search dropdown')
 
             ))
 
@@ -302,7 +302,7 @@ class ApplicantStepTwo extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => Applicant::class,
             //'attr' => array('class' => 'ui loadable form')
-            'attr' => array('class' => 'ui loadable form')
+            'attr' => array('class' => 'ui  form')
         ));
         $resolver->setRequired('user');
         $resolver->setRequired('type');

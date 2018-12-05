@@ -197,15 +197,11 @@
 
 
             </div>
-            {# Token CSRF #}
-            {# Token CSRF #}
-            {{ form_widget(form._token) }}
-            {# don't render unrendered fields #}
-            <center> <button type="submit" class="ui blue submit button">Save</button></center>
-            {{ form_end(form, {'render_rest': false}) }}
+            <center> {{ form_end(form) }}</center>
 
 
-        <p >
+
+            <p >
            <center>
 
             <a class="ui inverted green button" href="{{ path('photoUpload') }}">Click to go back</a>

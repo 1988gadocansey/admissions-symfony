@@ -112,7 +112,7 @@ class ApplicantStepThree extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => ExamResult::class,
             //'attr' => array('class' => 'ui loadable form')
-            'attr' => array('class' => 'ui loadabled   form')
+            'attr' => array('class' => 'ui form')
         ));
         $resolver->setRequired('user');
     }

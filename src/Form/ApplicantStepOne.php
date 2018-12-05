@@ -138,7 +138,7 @@ class ApplicantStepOne extends AbstractType
                 ->add('guardianOccupation', TextType::class, array('data' => @$this->existingApplicant->getGuardianOccupation(), 'required' => true, 'attr' => array('id' => 'guardianOccupation', 'v-form-ctrl' => '')))
                 ->add('guardianRelationship', TextType::class, array('data' => @$this->existingApplicant->getGuardianRelationship(), 'attr' => array('id' => 'guardianRelationship', 'v-form-ctrl' => '')))
                 ->add('guardianPhone', TelType::class, array('data' => @$this->existingApplicant->getGuardianPhone(),))
-                ->add('Save and Continue', SubmitType::class, array('attr' => array('class' => 'ui large orange button ', 'v-form-ctrl' => '')));
+                ->add('Save', SubmitType::class, array('attr' => array('class' => 'ui large orange button ', 'v-form-ctrl' => '')));
             if ($options['type']=="FOREIGN") {
 
                 $builder->add('nationality', EntityType::class, [
@@ -254,7 +254,7 @@ class ApplicantStepOne extends AbstractType
                 ->add('guardianOccupation', TextType::class, array(  'required' => true, 'attr' => array('id' => 'guardianOccupation', 'v-form-ctrl' => '')))
                 ->add('guardianRelationship', TextType::class, array(  'attr' => array('id' => 'guardianRelationship', 'v-form-ctrl' => '')))
                 ->add('guardianPhone', TelType::class, array( 'required' => true))
-                ->add('Save', SubmitType::class, array('attr' => array('class' => 'ui large orange button ', 'v-form-ctrl' => '')));
+                ->add('Save', SubmitType::class, array('attr' => array('class' => 'ui large orange button', 'v-form-ctrl' => '')));
 
             if ($options['type']=="FOREIGN") {
                 $builder->
@@ -283,7 +283,7 @@ class ApplicantStepOne extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => Applicant::class,
-            'attr' => array('class' => 'ui form   error')
+            'attr' => array('class' => 'ui form')
         ));
         $resolver->setRequired('user');
         $resolver->setRequired('type');
