@@ -116,6 +116,10 @@
                                 <td class="capitalize">{{ data.phone }}</td>
                             </tr>
                             <tr>
+                                <td class="uppercase" style="text-align: right" align="right"><span>Email:</span></td>
+                                <td class="capitalize">{{ data.email }}</td>
+                            </tr>
+                            <tr>
                                 <td class="uppercase" style="text-align: right" align="right"><span>Hometown:</span></td>
                                 <td class="capitalize">{{ data.hometown| upper }}</td>
 
@@ -256,7 +260,7 @@
                         <table>
                             <tr>
                                 <td class="uppercase" style="text-align: right" ><strong>Former School:</strong></td>
-                                <td class="capitalize">{{ data.formerSchool.name }}</td>
+                                <td class="capitalize">{{ data.formerSchool.name | upper }}</td>
 
                             </tr>
                             <tr>

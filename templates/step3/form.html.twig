@@ -62,33 +62,33 @@
 
             <table id="paymentTable" class="ui table"border="0"   align="center">
                 <tr id="paymentRow" payment_row="payment_row">
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.indexNo) }}
                     </td>
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.center) }}
 
                     </td>
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.month) }}
 
                     </td>
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.year) }}
 
                     </td>
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.subject) }}
 
                     </td>
 
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.examType) }}
                     </td>
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.sitting) }}
                     </td>
-                    <td valign="top">
+                    <td valign="top" class="required">
                         {{ form_row(form.grade) }}
                     </td>
                     {#<td  id="insertPaymentCell">
@@ -187,6 +187,8 @@
 
         <p>
         <center>
+
+
 
             <a class="ui inverted green button" href="{{ path('step2') }}">Click to go back</a>
 

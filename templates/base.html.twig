@@ -20,7 +20,13 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo2.png') }}" />
 
      <style type="text/css">
-          label.required{
+         .required label:after {
+             color: #e32;
+             content: ' *';
+             display:inline;
+         }
+
+         label.required{
               margin: -.2em 0 0 .2em;
               content: '*';
               color: #DB2828;
@@ -93,10 +99,11 @@ Designed by Gad Ocansey <gadocansey@gmail.com> +233243348522
 
             {% if(app.user.finalized==0) %}
                     <a class="ui inverted green button" href="{{ path('step1') }}">Edit Form</a>
-                    &nbsp;
-                {% endif %}
+                    &nbsp;  <a class="ui inverted orange button" href="{{ path('complete') }}" onclick="return confirm('This will finalized your form and submit to the admissions office. A form once submitted cannot be edited.')">Finalized Form</a>
+
+            {% endif %}
+
                  <a class="ui inverted blue button" href="{{ path('preview') }}">Preview Form</a>
-                  <a class="ui inverted orange button" href="{{ path('complete') }}" onclick="return confirm('This will finalized your form and submit to the admissions office. A form once submitted cannot be edited.')">Finalized Form</a> 
 
             {% endif %}
             <p class="item">Last Login {{ app.user.lastLogin|date('F j, Y g:i a ')  }}</p>

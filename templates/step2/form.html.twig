@@ -87,7 +87,7 @@
                             {% if (app.user.formType=='MTECH' or app.user.formType=='BTECH' or app.user.formType=='FOREIGN') %}
                                 <a class="ui inverted blue button" href="{{ path('preview') }}">Click to Preview Form</a>
 
-                            {% elseif app.request.get('done')==2  %}
+                            {% elseif app.request.get('done')==2 or app.user.getFormNo !=0  %}
                                  <a class="ui inverted blue button" href="{{ path('step3') }}">Click to go to step3</a>
 
                             {%  endif%}
