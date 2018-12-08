@@ -1281,7 +1281,7 @@ class Applicant implements  \Serializable
 
     /**
 
-     * @ORM\Column(type="integer",options={"default"=0},nullable=True)
+     * @ORM\Column(type="string",options={"default"=0},nullable=True)
      */
     private $qualify;
 
