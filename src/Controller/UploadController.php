@@ -165,7 +165,7 @@ class UploadController extends AbstractController
         $user = $this->getUser();
         $applicant = $user->getFormNo();
 
-
+        //var_dump($applicant);
         $uploaded = $user->getPictureUploaded();
         $applicantID = $user->getId();
 
@@ -206,7 +206,8 @@ class UploadController extends AbstractController
                          **/
 
 
-                        $applicantNumber = date("Y") . $applicantNumber;
+                        //$applicantNumber = date("Y") . $applicantNumber;
+                        //$applicantNumber = "2019" . $applicantNumber;
 
                         $filename = $applicantNumber . "." . $ext;
                         /*
