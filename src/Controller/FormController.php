@@ -435,7 +435,7 @@ class FormController extends AbstractController
         $formNo = $user->getFormNo();
 
         $applicant = $em->getRepository('App:Applicant')->findOneByApplicationNumber($formNo);
-        $result = $em->getRepository('App:ExamResult')->findByApplicant($formNo);
+        $result = $em->getRepository('App:ExamResult')->findByForm($formNo);
         // dump($applicant);die();
         return $this->render('step4/printout.html.twig', array(
 

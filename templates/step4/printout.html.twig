@@ -304,6 +304,7 @@
                         <th data-field="price">EXAM TYPE</th>
                         <th data-field="price">SITTING</th>
                         <th data-field="price">MONTH OF EXAM</th>
+                        <th data-field="price">YEAR OF EXAM</th>
                         <th data-field="price">CENTER</th>
 
                     </tr>
@@ -320,6 +321,7 @@
                             <td>{{ genus.examType }}</td>
                             <td>{{ genus.sitting }}</td>
                             <td>{{ genus.month|upper }}</td>
+                            <td>{{ genus.year}}</td>
                             <td>{{ genus.center|upper }}</td>
                         </tr>
                     {% endfor %}
