@@ -287,15 +287,17 @@ class FormController extends AbstractController
         }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $formNo = $user->getFormNo();
         $type = $user->getFormType();
 
         $applicant = $em->getRepository('App:Applicant')->findOneByApplicationNumber($formNo);
+
+        //dd($applicant);
 
 
         $form = $this->createForm(ApplicantStepTwo::class, $applicant, array(
             'user' => $formNo,
             'type'=>$type,
+
 
         ));
 
@@ -312,7 +314,8 @@ class FormController extends AbstractController
                 $applicant->setClass($form->get('class')->getData());
             }*/
             $applicant->setProgrammeStudied(ucwords($form->get('programmeStudied')->getData()));
-
+            $applicant->setReferrals(ucwords($form->get('referrals')->getData()));
+                //die($form->get('referrals')->getData());
             //$applicant->setCreatedAt(new \DateTime());
             //$applicant->setUpdatedAt(new \DateTime());
 
@@ -321,7 +324,7 @@ class FormController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Step 2 completed!');
+            $this->addFlash('success', 'Data saved successfully - Step 2 completed!');
             #return $this->redirectToRoute('step2');
             return  $this->redirectToRoute('step2', array('done' => 2));
 
@@ -357,6 +360,7 @@ class FormController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $formNo = $user->getFormNo();
+        $applicant = $user->getId();
 
         $examResult = new ExamResult();
 
@@ -370,15 +374,20 @@ class FormController extends AbstractController
          * check if applicant exist before persisting to DB
          */
         if ($form->isSubmitted() && $form->get('center')->isValid()) {
-
+            //die($form->get('center')->getData());
             $helper->getGradeValue($form->get('grade')->getData());
-            $examResult->setApplicant($formNo);
+            $examResult->setApplicant($applicant);
             $examResult->setSubject($form->get('subject')->getData());
             $examResult->setExamType($form->get('examType')->getData());
             $examResult->setSitting($form->get('sitting')->getData());
             $examResult->setMonth($form->get('month')->getData());
+
             $examResult->setCenter($form->get('center')->getData());
+
+
             $examResult->setIndexNo($form->get('indexNo')->getData());
+            $examResult->setForm($formNo);
+            $examResult->setApplicant($applicant);
             $examResult->setGrade($form->get('grade')->getData());
             $examResult->setSubjectType($form->get('subject')->getData()->getType());
             $examResult->setGradeValue($helper->getGradeValue($form->get('grade')->getData()));
@@ -393,19 +402,21 @@ class FormController extends AbstractController
              */
             $userData = $em->getRepository('App\Entity\User')->findOneByFormNo($formNo);
 
+
+
             $userData->setFormCompleted(1);
 
             $em->merge($userData);
             $em->flush();
 
 
-            $this->addFlash('success', "  Step 3 completed");
+            $this->addFlash('success', " Data saved - Step 3 completed");
             return $this->redirectToRoute('step3');
 
         }
 
-        $result = $em->getRepository('App:ExamResult')->findByApplicant($formNo);
-        //  dump($result);die();
+        $result = $em->getRepository('App:ExamResult')->findByForm($formNo);
+        //dump($result);die();
         return $this->render('step3/form.html.twig', array(
             'form' => $form->createView(),
             'data' => $result,
@@ -448,7 +459,7 @@ class FormController extends AbstractController
         $firstChoice = $applicant->getProgrammeID1()->getName();
         $secondChoice = $applicant->getProgrammeID2()->getName();
         $thirdChoice = $applicant->getProgrammeID3()->getName();
-        $name = $applicant->getName();
+        $name = ucwords($applicant->getName());
         $phone = $applicant->getPhone();
         $email= $applicant->getEmail();
         $grades = $em->getRepository('App:ExamResult')->findByApplicant($formNo);
@@ -457,14 +468,14 @@ class FormController extends AbstractController
       //  dump($applicant->getFormCompleted());die();
 
         if (@$user->getFormCompleted() == 1) {
-            if ((!in_array($user->getFormType(), $formsType)) && !count($grades) > 0) {
+            if ((!in_array($user->getFormType(), $formsType)) ) {
 
-               /* $userData = $em->getRepository('App\Entity\User')->findOneByFormNo($formNo);
+               $userData = $em->getRepository('App\Entity\User')->findOneByFormNo($formNo);
 
                 $userData->setFinalized(1);
 
                 $em->merge($userData);
-                $em->flush();*/
+                $em->flush();
                 @$helper->firesms($message, $phone, $phone);
             } else {
                 $userData = $em->getRepository('App\Entity\User')->findOneByFormNo($formNo);
@@ -544,6 +555,29 @@ class FormController extends AbstractController
 
         $this->addFlash('success', 'result deleted successfully');
 
+        return $this->redirectToRoute('step3');
+    }
+    /*
+     * This method update the system to tell us the applicant has printed the letter
+     */
+
+    /**
+     * @Route("/form/print/update", name="updatePrint")
+     */
+    public function updatePrint(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $formNo = $user->getFormNo();
+
+        $applicant = $em->getRepository('App:Applicant')->findOneByApplicationNumber($formNo);
+
+
+
+        $applicant->setLetterPrinted(1);
+
+        $em->merge($applicant);
+        $em->flush();
         return $this->redirectToRoute('step3');
     }
 

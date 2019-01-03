@@ -104,8 +104,9 @@ class ApplicantStepOne extends AbstractType
 
                 ->add('entryQualificationTwo', ChoiceType::class, array('data' => @$this->existingApplicant->getentryQualificationOne(), 'placeholder' => 'Choose an answer',
                     'choices' => array( 'WASSSCE' => 'WASSSCE', 'SSSCE' => 'SSSCE', 'TEU/TECHNICAL CERTIFICATES' => 'TEU/TECHNICAL CERTIFICATES', 'NVTI' => 'NVTI', '1st Degree' => '1st Degree', '2nd Degree' => '2nd Degree', 'HND' => 'HND','NECO'=>'NECO','DIPLOMA'=>'DIPLOMA'),
+                    'required'=>"false",
 
-                    'attr' => array('v-model' => 'qualification2', 'v-select' => 'qualification1', 'id' => 'qualification2', 'class' => 'ui fluid search dropdown')))
+                    'attr' => array('v-model' => 'qualification2', 'v-select' => 'qualification2', 'id' => 'qualification2', 'class' => 'ui fluid search dropdown')))
 
                 ->add('physicallyDisabled', ChoiceType::class, array('data' => @$this->existingApplicant->getPhysicallyDisabled(), 'placeholder' => 'Choose an answer',
                     'choices' => array('Yes' => 'Yes', 'No' => 'No'),
@@ -125,7 +126,8 @@ class ApplicantStepOne extends AbstractType
                 ->add('region', EntityType::class, [
                     'data' => @$this->existingApplicant->getRegion(),
                     'class' => Region::class,
-                    'required' => false,
+                    'label'=>"Current region",
+                    'required' => true,
                     'placeholder' => 'Choose hometown region',
                     'attr' => ['v-model' => 'region', 'v-select' => 'region', 'required' => '', 'id' => 'region', 'class' => 'ui fluid search dropdown']
 
@@ -241,7 +243,7 @@ class ApplicantStepOne extends AbstractType
                 ->add('region', EntityType::class, [
 
                     'class' => Region::class,
-
+                    'label'=>"Current region",
                     'placeholder' => 'Choose hometown region',
                     'attr' => ['v-model' => 'region', 'v-select' => 'region', 'required' => '', 'id' => 'region', 'class' => 'ui fluid search dropdown']
 

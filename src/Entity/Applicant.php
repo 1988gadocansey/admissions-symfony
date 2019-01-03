@@ -977,6 +977,32 @@ class Applicant implements  \Serializable
     private $religion;
 
     /**
+     * @return mixed
+     */
+    public function getReferrals()
+    {
+        return $this->referrals;
+    }
+
+    /**
+     * @param mixed $referrals
+     */
+    public function setReferrals($referrals)
+    {
+        $this->referrals = $referrals;
+    }
+
+    /**
+
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string",name="referrals",nullable=True)
+     */
+    private $referrals;
+
+
+
+
+    /**
 
      * @ORM\Column(type="string",nullable=True)
      * @Assert\Blank()

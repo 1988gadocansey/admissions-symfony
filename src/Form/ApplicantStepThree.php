@@ -89,6 +89,7 @@ class ApplicantStepThree extends AbstractType
             ->add('month', ChoiceType::class, array('required'=>true,  'placeholder' => 'select',
                 'choices'   => array( 'MAY/JUNE' => '6', "NOV/DEC"=>"12"), 'attr'=>array('v-model'=>'sitting','v-select'=>'sitting','id'=>'sitting','class'=>'ui fluid search dropdown'))
 )
+
             ->add('year', ChoiceType::class,
                 array(
                     'required' => true, 'choices' => $this->buildYearChoices(), 'attr'=>array('v-model'=>'sitting','v-select'=>'sitting','id'=>'sitting','class'=>'ui fluid search dropdown')

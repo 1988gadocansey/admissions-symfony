@@ -188,7 +188,7 @@ class ExamResult implements \JsonSerializable
     /**
      * @param string $center
      */
-    public function setCenter(string $center)
+    public function setCenter( $center)
     {
         $this->center = $center;
     }
@@ -211,7 +211,7 @@ class ExamResult implements \JsonSerializable
 
     /**
      * @var int
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",name="applicant_id")
      */
     private $applicant;
 
@@ -268,12 +268,39 @@ class ExamResult implements \JsonSerializable
     private $month;
 
     /**
+     * @return string
+     */
+    public function getForm(): string
+    {
+        return $this->form;
+    }
+
+    /**
+     * @param string $form
+     */
+    public function setForm(string $form): void
+    {
+        $this->form = $form;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string")
      */
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string",name="form")
+     */
+    private $form;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string",name="center")
+     */
     private $center;
 
     /**

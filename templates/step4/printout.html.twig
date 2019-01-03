@@ -54,7 +54,7 @@
         {% if(app.user.formCompleted==1) %}
             <div class="right aligned column" style="margin-left: 590px">
                 <br/>
-                <a onclick="javascript:printDiv('print')" class="ui right positive basic button"> Click to preview and
+                <a  onclick="javascript:printDiv('print')" class="ui right positive basic button print"> Click to preview and
                     print.</a>
                 <br/>
             </div>
@@ -443,10 +443,53 @@
         }
     </script>
 
+    <script>
+
+
+        (function() {
+            var beforePrint = function() {
+
+            };
+            var afterPrint = function() {
+                // do ajax for insert queries
+                $.ajax({
+                    url: "{{ path('updatePrint') }}",
+                    success: function(data){
+                        $("#responseArea").text(data);
+                    }
+                });
+            };
+
+            if (window.matchMedia) {
+                var mediaQueryList = window.matchMedia('print');
+                mediaQueryList.addListener(function(mql) {
+                    if (mql.matches) {
+                        beforePrint();
+                    } else {
+                        afterPrint();
+                    }
+                });
+            }
+
+            window.onbeforeprint = beforePrint;
+            window.onafterprint = afterPrint;
+        }());
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
 
 
 {% endblock %}
-
 
 
 

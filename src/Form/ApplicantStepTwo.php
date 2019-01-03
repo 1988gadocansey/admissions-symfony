@@ -59,45 +59,54 @@ class ApplicantStepTwo extends AbstractType
                 {
                     if($type=="FOREIGN") {
                         return $repository->createQueryBuilder('p')
-
+                            ->where('p.running = ?1')
+                            ->setParameter(1,    1)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="HND"){
                         $type="HND";
                         return $repository->createQueryBuilder('p')
-                            //->where('p.name LIKE ?1')
-                            //->andWhere('p.level_admitted NOT LIKE ?2')
-                            //->setParameter(1,   $type . '%')
-                            //->setParameter(2,   '%'.$type . '%')
-
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="DIPLOMA"){
-                        $type="DIPLOMA";
+                        $type="NON-TERTIARY";
                         return $repository->createQueryBuilder('p')
-                           // ->where('p.name LIKE ?1')
-                           // ->setParameter(1,   $type . '%')
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
+
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="BTECH"){
-                        $type="Bachelor";
+                        $type="BTECH";
                         return $repository->createQueryBuilder('p')
-                           // ->where('p.name LIKE ?1')
-                            //->setParameter(1,    '%'.$type . '%')
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="MATURE"){
                         $type="HND";
                         return $repository->createQueryBuilder('p')
-                            //->where('p.name LIKE ?1')
-                            //->setParameter(1,   $type . '%')
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="MTECH"){
-                        $type="MASTER OF ";
+                        $type="POSTGRADUATE";
                         return $repository->createQueryBuilder('p')
-                            //->where('p.name LIKE ?1')
-                           // ->setParameter(1,    '%'.$type . '%')
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
 
@@ -116,47 +125,55 @@ class ApplicantStepTwo extends AbstractType
                 {
                     if($type=="FOREIGN") {
                         return $repository->createQueryBuilder('p')
+                            ->where('p.running = ?1')
+                            ->setParameter(1,    1)
 
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="HND"){
                         $type="HND";
                         return $repository->createQueryBuilder('p')
-                            ->where('p.running = ?2')
-                            ->setParameter(1,    $type)
-                            ->setParameter(2,    1)
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="DIPLOMA"){
                         $type="NON-TERTIARY";
                         return $repository->createQueryBuilder('p')
-                            ->where('p.running = ?2')
-                            ->setParameter(1,    $type)
-                            ->setParameter(2,    1)
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
+
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="BTECH"){
                         $type="BTECH";
                         return $repository->createQueryBuilder('p')
-                            ->where('p.running = ?2')
-                            ->setParameter(1,    $type)
-                            ->setParameter(2,    1)
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="MATURE"){
                         $type="HND";
                         return $repository->createQueryBuilder('p')
-                            ->where('p.running = ?2')
-                            ->setParameter(1,    $type)
-                            ->setParameter(2,    1)
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
                     elseif ($type=="MTECH"){
                         $type="POSTGRADUATE";
                         return $repository->createQueryBuilder('p')
-                            ->where('p.running = ?2')
-                            ->setParameter(1,    $type)
-                            ->setParameter(2,    1)
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
 
@@ -186,6 +203,8 @@ class ApplicantStepTwo extends AbstractType
                 {
                     if($type=="FOREIGN") {
                         return $repository->createQueryBuilder('p')
+                            ->where('p.running = ?1')
+                            ->setParameter(1,    1)
 
                             ->add('orderBy', 'p.name ASC');
                     }
@@ -193,7 +212,7 @@ class ApplicantStepTwo extends AbstractType
                         $type="HND";
                         return $repository->createQueryBuilder('p')
                             ->where('p.type = ?1')
-                            ->where('p.running = ?2')
+                            ->andWhere('p.running = ?2')
                             ->setParameter(1,    $type)
                             ->setParameter(2,    1)
                             ->add('orderBy', 'p.name ASC');
@@ -202,7 +221,7 @@ class ApplicantStepTwo extends AbstractType
                         $type="NON-TERTIARY";
                         return $repository->createQueryBuilder('p')
                             ->where('p.type = ?1')
-                            ->where('p.running = ?2')
+                            ->andWhere('p.running = ?2')
                             ->setParameter(1,    $type)
                             ->setParameter(2,    1)
                             ->add('orderBy', 'p.name ASC');
@@ -211,7 +230,7 @@ class ApplicantStepTwo extends AbstractType
                         $type="BTECH";
                         return $repository->createQueryBuilder('p')
                             ->where('p.type = ?1')
-                            ->where('p.running = ?2')
+                            ->andWhere('p.running = ?2')
                             ->setParameter(1,    $type)
                             ->setParameter(2,    1)
                             ->add('orderBy', 'p.name ASC');
@@ -220,7 +239,7 @@ class ApplicantStepTwo extends AbstractType
                         $type="HND";
                         return $repository->createQueryBuilder('p')
                             ->where('p.type = ?1')
-                            ->where('p.running = ?2')
+                            ->andWhere('p.running = ?2')
                             ->setParameter(1,    $type)
                             ->setParameter(2,    1)
                             ->add('orderBy', 'p.name ASC');
@@ -229,7 +248,7 @@ class ApplicantStepTwo extends AbstractType
                         $type="POSTGRADUATE";
                         return $repository->createQueryBuilder('p')
                             ->where('p.type = ?1')
-                            ->where('p.running = ?2')
+                            ->andWhere('p.running = ?2')
                             ->setParameter(1,    $type)
                             ->setParameter(2,    1)
                             ->add('orderBy', 'p.name ASC');
@@ -267,6 +286,17 @@ class ApplicantStepTwo extends AbstractType
 
             ->add('programmeStudied', TextType::class, array( 'required' => true, 'attr' => array('v-model' => 'guardianAddress', 'v-form-ctrl' => '', 'required' => '', 'id' => 'lastName', 'class' => 'required')))
 
+
+            ->add('referrals', ChoiceType::class, [
+                'required' => true,
+                'label' => 'Where did you heard about the admissions ',
+                'data' => @$this->existingApplicant->getReferrals(),
+                'choices' => [
+                    '' => 'select referral',
+                    'TTU Outreach Team' => 'outreach', 'Print Media Advertisement' => 'advert', 'Social Media Platform' => 'social', 'Friends' => 'friend','Others' => 'other'
+                ],
+                'attr' => ['v-model' => 'referrals', 'v-select' => 'referrals', 'id' => 'referrals', 'class' => 'ui fluid search dropdown']
+            ]);
         ;
 
 
@@ -277,7 +307,7 @@ class ApplicantStepTwo extends AbstractType
                 ->add('award', ChoiceType::class, [
                     'required' => false,
                     'label' => 'Class obtained ',
-                    'data' => @$this->existingApplicant->getClass(),
+                    'data' => @$this->existingApplicant->getAward(),
                     'choices' => [
                         '' => 'select class',
                         'First Class' => '1st Class', 'Second Upper' => '2nd Upper', 'Second Lower' => '2nd Lower', 'Third Class' => '3rd Class'
