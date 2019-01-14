@@ -109,6 +109,15 @@ class ApplicantStepTwo extends AbstractType
                             ->setParameter(2,    $type)
                             ->add('orderBy', 'p.name ASC');
                     }
+                    else{
+                        $type="HND";
+                        return $repository->createQueryBuilder('p')
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
+                            ->add('orderBy', 'p.name ASC');
+                    }
 
                 },
                 'required'=>true,
@@ -169,6 +178,15 @@ class ApplicantStepTwo extends AbstractType
                     }
                     elseif ($type=="MTECH"){
                         $type="POSTGRADUATE";
+                        return $repository->createQueryBuilder('p')
+                            ->where('p.running = ?1')
+                            ->andWhere('p.type = ?2')
+                            ->setParameter(1,    1)
+                            ->setParameter(2,    $type)
+                            ->add('orderBy', 'p.name ASC');
+                    }
+                    else{
+                        $type="HND";
                         return $repository->createQueryBuilder('p')
                             ->where('p.running = ?1')
                             ->andWhere('p.type = ?2')

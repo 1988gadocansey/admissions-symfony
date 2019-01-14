@@ -38,45 +38,43 @@ class MessageController extends AbstractController
      */
     public function indexAction( UserPasswordEncoderInterface $encoder)
     {
+
          ini_set('max_execution_time', 50000);
         
         $conn = $this->em->getConnection();
-        $sql = "SELECT pin,serial FROM tpoly_forms ";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        for ($a=0;$a<100;$a++) {
+            $pin = $this->getPin();
+            $serial = $this->getSerial();
 
-        $data=$stmt->fetchAll();
-        foreach ($data as $row){
-            $pin=$row['pin'];
-            $serial=$row['serial'];
-             // 3) Encode the password (you could also do this via Doctrine listener)
-           // $encoder = $this->get('security.encoder_factory')->getEncoder($userClass);
-           // $encodedPassword = $encoder->encodePassword($pin);
+            $user = new User();
 
-             /*$sql = "INSERT INTO admissions_user(username, username_canonical,
-                pin,password
-                )
-             VALUES('$serial','$serial','$pin','$password') ";*/
-             $conn->prepare($sql);
+            $encoded = $encoder->encodePassword($user, $pin);
 
-              $user = new User();
-              
-                $encoded = $encoder->encodePassword($user, $pin);
+            $user->setPassword($encoded);
+            $user->setFormType("MATURE");
+            $user->setSoldBy("UBA");
+            $user->setSold("0");
+            $user->setYear(date("Y"));
+            $user->setStarted(0);
 
-                $user->setPassword($encoded);
-                $user->setUsername($serial);
-                $user->setPin($pin);
+            $user->setUsername($serial);
+            $user->setPin($pin);
 
 
-                 // 4) save the User!
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($user);
-                    $em->flush();
-
+            // 4) save the User!
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
         }
+
+         return new Response(
+        '<html><body>Voucher generatte</body></html>'
+    );
+
+
     }
     public function getPin(){
-        $str = 'abcdefhkmnprtuvwxyz234678';
+        $str = '59234678ABCDEFGHJKLMNPRSTUVWXY';
         $shuffled = str_shuffle($str);
         $vcode = substr($shuffled, 0, 9);
         $real = strtoupper($vcode);
@@ -84,12 +82,12 @@ class MessageController extends AbstractController
         return $real;
     }
     public function getSerial(){
-        $str = 'abcdefhkmnprtuvwxyz234678';
+        $str = 'ABCDEFGHJKLMNPRSTUVWXYZ23456789';
         $shuffled = str_shuffle($str);
-        $vcode = substr($shuffled, 0, 6);
+        $vcode = substr($shuffled, 0, 5);
         $real = strtoupper($vcode);
 
-        return "TTU".date("Y").$real;
+        return "TTU".date("y").$real;
     }
     /**
      * @Route("/foreign/applicants/apply", name="foreign")

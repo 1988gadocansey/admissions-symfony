@@ -191,14 +191,15 @@ class UploadController extends AbstractController
                 // generate a random name for the file but keep the extension
                 //$filename = uniqid().".".$file->getClientOriginalExtension();
                 $valid_exts = array('jpg', 'JPG'); // valid extensions
-                $max_size = 250; // max file size
+                $max_size = 500; // max file size
+                //dd($file->getClientSize());
                 $ext = strtolower($file->getClientOriginalExtension());
                 //$ext = $file->getClientOriginalExtension();
                 if (in_array($ext, $valid_exts)) {
 
 
                     if ($file->getClientSize() <= $max_size) {
-                        $path = 'albums/thumbnails';
+                        $path = 'public/albums/thumbnails';
 
                         /**
                          * get new form no for applicant
@@ -206,7 +207,7 @@ class UploadController extends AbstractController
                          **/
 
 
-                        //$applicantNumber = date("Y") . $applicantNumber;
+                        $applicantNumber = date("Y") . $applicantNumber;
                         //$applicantNumber = "2019" . $applicantNumber;
 
                         $filename = $applicantNumber . "." . $ext;

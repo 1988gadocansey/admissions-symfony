@@ -191,7 +191,7 @@ class FormController extends AbstractController
                 $applicant->setStatus();
                 $applicant->setAdmited();
                 $applicant->setFormCompleted(0);
-                $applicant->setYearOfAdmission(date('Y'));
+                $applicant->setYearOfAdmission(date('Y')."/".(date("Y")+1));
                 $applicant->setFormType(ucwords($formType));
                 $applicant->setLetterPrinted(0);
                 $applicant->setEntryMode(ucwords($helper->entryType($formType)));
@@ -249,7 +249,7 @@ class FormController extends AbstractController
                 $applicant->setStatus();
                 $applicant->setAdmited();
                 $applicant->setFormCompleted(0);
-                $applicant->setYearOfAdmission(date('Y'));
+                $applicant->setYearOfAdmission(date('Y')."/".(date("Y")+1));
                 $applicant->setFormType(ucwords($formType));
                 $applicant->setLetterPrinted(0);
                 $applicant->setEntryMode(ucwords($helper->entryType($formType)));

@@ -276,6 +276,75 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
+     * @return string
+     */
+    public function getSoldBy(): string
+    {
+        return $this->sold_by;
+    }
+
+    /**
+     * @param string $sold_by
+     */
+    public function setSoldBy(string $sold_by): void
+    {
+        $this->sold_by = $sold_by;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSold(): string
+    {
+        return $this->sold;
+    }
+
+    /**
+     * @param string $sold
+     */
+    public function setSold(string $sold): void
+    {
+        $this->sold = $sold;
+    }
+
+    /**
+     * @return string
+     */
+    public function getYear(): string
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param string $year
+     */
+    public function setYear(string $year): void
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $sold;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $year;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $sold_by;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string")
