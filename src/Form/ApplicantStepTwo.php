@@ -307,7 +307,7 @@ class ApplicantStepTwo extends AbstractType
 
             ->add('referrals', ChoiceType::class, [
                 'required' => true,
-                'label' => 'Where did you heard about the admissions ',
+                'label' => 'How did you hear about the admissions ',
                 'data' => @$this->existingApplicant->getReferrals(),
                 'choices' => [
                     '' => 'select referral',

@@ -191,7 +191,7 @@ class UploadController extends AbstractController
                 // generate a random name for the file but keep the extension
                 //$filename = uniqid().".".$file->getClientOriginalExtension();
                 $valid_exts = array('jpg', 'JPG'); // valid extensions
-                $max_size = 500; // max file size
+                $max_size = 500000; // max file size
                 //dd($file->getClientSize());
                 $ext = strtolower($file->getClientOriginalExtension());
                 //$ext = $file->getClientOriginalExtension();

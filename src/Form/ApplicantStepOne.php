@@ -126,9 +126,9 @@ class ApplicantStepOne extends AbstractType
                 ->add('region', EntityType::class, [
                     'data' => @$this->existingApplicant->getRegion(),
                     'class' => Region::class,
-                    'label'=>"Current region",
+                    'label'=>"Current location region",
                     'required' => true,
-                    'placeholder' => 'Choose hometown region',
+                    'placeholder' => 'Choose location region',
                     'attr' => ['v-model' => 'region', 'v-select' => 'region', 'required' => '', 'id' => 'region', 'class' => 'ui fluid search dropdown']
 
 
@@ -243,8 +243,8 @@ class ApplicantStepOne extends AbstractType
                 ->add('region', EntityType::class, [
 
                     'class' => Region::class,
-                    'label'=>"Current region",
-                    'placeholder' => 'Choose hometown region',
+                    'label'=>"Current location region",
+                    'placeholder' => 'Choose location region',
                     'attr' => ['v-model' => 'region', 'v-select' => 'region', 'required' => '', 'id' => 'region', 'class' => 'ui fluid search dropdown']
 
 
