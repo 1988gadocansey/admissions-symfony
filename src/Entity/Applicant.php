@@ -1247,6 +1247,22 @@ class Applicant implements  \Serializable
      */
     private $award;
 
+    /**
+     * @return mixed
+     */
+    public function getAwaiting()
+    {
+        return $this->awaiting;
+    }
+
+    /**
+     * @param mixed $awaiting
+     */
+    public function setAwaiting($awaiting): void
+    {
+        $this->awaiting = $awaiting;
+    }
+
 
     /**
 
@@ -1261,6 +1277,14 @@ class Applicant implements  \Serializable
      * @ORM\Column(type="string")
      */
     private $formType;
+
+    /**
+
+     * @ORM\Column(type="string")
+     */
+    private $awaiting;
+
+
 
     /**
 

@@ -314,8 +314,20 @@ class ApplicantStepTwo extends AbstractType
                     'TTU Outreach Team' => 'outreach', 'Print Media Advertisement' => 'advert', 'Social Media Platform' => 'social', 'Friends' => 'friend','Others' => 'other'
                 ],
                 'attr' => ['v-model' => 'referrals', 'v-select' => 'referrals', 'id' => 'referrals', 'class' => 'ui fluid search dropdown']
-            ]);
-        ;
+            ])
+
+
+        ->add('awaiting', ChoiceType::class, [
+        'required' => true,
+        'label' => 'Apply as awaiting result? ',
+        'data' => @$this->existingApplicant->getAwaiting(),
+        'choices' => [
+            '' => 'select answer',
+            'Yes' => '1', 'No' => '0'
+        ],
+        'attr' => ['v-model' => 'awaiting', 'v-select' => 'awaiting', 'id' => 'awaiting', 'class' => 'ui fluid search dropdown']
+    ]);
+
 
 
 

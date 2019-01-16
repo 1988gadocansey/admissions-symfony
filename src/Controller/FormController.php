@@ -315,6 +315,7 @@ class FormController extends AbstractController
             }*/
             $applicant->setProgrammeStudied(ucwords($form->get('programmeStudied')->getData()));
             $applicant->setReferrals(ucwords($form->get('referrals')->getData()));
+            $applicant->setAwaiting(ucwords($form->get('awaiting')->getData()));
                 //die($form->get('referrals')->getData());
             //$applicant->setCreatedAt(new \DateTime());
             //$applicant->setUpdatedAt(new \DateTime());
