@@ -914,6 +914,22 @@ class Applicant implements  \Serializable
      * @ORM\Column(type="string",unique=true)
      */
     private $applicationNumber;
+
+    /**
+     * @return mixed
+     */
+    public function getFormId()
+    {
+        return $this->form_id;
+    }
+
+    /**
+     * @param mixed $form_id
+     */
+    public function setFormId($form_id): void
+    {
+        $this->form_id = $form_id;
+    }
     /**
 
      * @Assert\NotBlank()
@@ -926,6 +942,15 @@ class Applicant implements  \Serializable
      * @ORM\Column(type="string")
      */
     private $otherNames;
+
+
+    /**
+
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $form_id;
+
+
 
     /**
 

@@ -126,6 +126,7 @@ class FormController extends AbstractController
         $user = $this->getUser();
         $formNo = $user->getFormNo();
         $pin = $user->getPin();
+        $form_Id = $user->getId();
         $formType = $user->getFormType();
         /*
          * check if applicant exist before persisting to DB
@@ -146,6 +147,7 @@ class FormController extends AbstractController
                 $applicant = new Applicant();
                 $applicant->setApplicationNumber($formNo);
                 $applicant->setPin($pin);
+                $applicant->setFormId($form_Id);
                 $applicant->setFirstName(ucwords($form->get('firstName')->getData()));
                 $applicant->setLastName(ucwords($form->get('lastName')->getData()));
                 $applicant->setOtherNames(ucwords($form->get('otherNames')->getData()));
@@ -205,6 +207,7 @@ class FormController extends AbstractController
                 $applicant->setFirstName(ucwords($form->get('firstName')->getData()));
                 $applicant->setLastName(ucwords($form->get('lastName')->getData()));
                 $applicant->setOtherNames(ucwords($form->get('otherNames')->getData()));
+
                 $applicant->setName();
                 $applicant->setGender(ucwords($form->get('gender')->getData()));
                 $applicant->setTitle(ucwords($form->get('title')->getData()));
